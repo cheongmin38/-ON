@@ -2,6 +2,7 @@ package com.example.ui.screens
 
 import android.widget.Toast
 import androidx.compose.animation.*
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -671,7 +672,7 @@ fun GuardianSafeZoneScreen(viewModel: AppViewModel) {
             shape = RoundedCornerShape(16.dp)
         ) {
             Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                Text("활동 범위 제한 구역 설정", face = "Roboto", fontWeight = FontWeight.Bold, fontSize = 15.sp, color = WarmSecondary)
+                Text("활동 범위 제한 구역 설정", fontWeight = FontWeight.Bold, fontSize = 15.sp, color = WarmSecondary)
                 
                 OutlinedTextField(
                     value = homeAddress,

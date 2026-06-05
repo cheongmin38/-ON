@@ -4,6 +4,7 @@ import android.widget.Toast
 import androidx.compose.animation.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -22,6 +23,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.data.FamilyMemberEntity
@@ -98,9 +102,10 @@ fun PatientMainScreen(viewModel: AppViewModel) {
     val activeAlarm by viewModel.activeMedicationAlarm.collectAsState()
 
     // Retrieve today's date in Korean format
-    val todayFormatted = remember {
-        val sdf = SimpleDateFormat("yyyy년 M월 d일 EEEE", Locale.KOREAN)
-        sdf.format(Date())
+    val (dateStr, dayOfWeekStr) = remember {
+        val dateSdf = SimpleDateFormat("yyyy년 M월 d일", Locale.KOREAN)
+        val daySdf = SimpleDateFormat("EEEE", Locale.KOREAN)
+        Pair(dateSdf.format(Date()), daySdf.format(Date()))
     }
 
     Column(
@@ -110,56 +115,78 @@ fun PatientMainScreen(viewModel: AppViewModel) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween
     ) {
-        // Upper Block: Greetings and Date
+        // Upper Block: Greetings and Date with custom status simulation
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.padding(top = 16.dp)
+            modifier = Modifier.padding(top = 8.dp)
         ) {
+            // Simulated beautifully branded top bar
             Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Center
-            ) {
-                Text(
-                    text = "🌸",
-                    fontSize = 28.sp,
-                    modifier = Modifier.padding(end = 6.dp)
-                )
-                Text(
-                    text = "기억지킴이",
-                    fontSize = 22.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = WarmSecondary
-                )
-            }
-            
-            Spacer(modifier = Modifier.height(16.dp))
-            
-            // Grand, highly visible greeting text
-            Card(
-                colors = CardDefaults.cardColors(containerColor = WarmSurface),
-                shape = RoundedCornerShape(16.dp),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .border(1.dp, WarmBorder, RoundedCornerShape(16.dp))
+                    .padding(horizontal = 4.dp, vertical = 6.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "기억지킴이",
+                    fontSize = 19.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = WarmOnSurface
+                )
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(6.dp)
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .size(10.dp)
+                            .clip(CircleShape)
+                            .background(Color(0xFF2E7D32)) // WarmActiveGreen
+                    )
+                    Text(
+                        text = "보호자 연결됨",
+                        fontSize = 13.sp,
+                        color = WarmOnSurface.copy(alpha = 0.6f),
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+            }
+            
+            Spacer(modifier = Modifier.height(12.dp))
+            
+            // Grand, highly visible greeting text card
+            Card(
+                colors = CardDefaults.cardColors(containerColor = Color.White.copy(alpha = 0.65f)),
+                shape = RoundedCornerShape(24.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .border(1.dp, Color(0xFFFFCC80).copy(alpha = 0.45f), RoundedCornerShape(24.dp))
             ) {
                 Column(
-                    modifier = Modifier.padding(16.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
+                    modifier = Modifier.padding(20.dp),
+                    horizontalAlignment = Alignment.Start
                 ) {
                     Text(
                         text = "안녕하세요, ${patientInfo?.name ?: "어르신"} 님",
-                        fontSize = 22.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = WarmOnSurface,
-                        textAlign = TextAlign.Center
-                    )
-                    Spacer(modifier = Modifier.height(4.dp))
-                    Text(
-                        text = "오늘은 $todayFormatted 입니다.",
-                        fontSize = 18.sp,
+                        fontSize = 20.sp,
                         fontWeight = FontWeight.Medium,
-                        color = WarmGrey,
-                        textAlign = TextAlign.Center
+                        color = WarmOnSurface.copy(alpha = 0.8f)
+                    )
+                    Spacer(modifier = Modifier.height(6.dp))
+                    Text(
+                        text = buildAnnotatedString {
+                            append("오늘은 ")
+                            withStyle(style = SpanStyle(color = Color(0xFFD84315), fontWeight = FontWeight.Black)) {
+                                append(dateStr)
+                            }
+                            append("\n")
+                            append("${dayOfWeekStr}입니다.")
+                        },
+                        fontSize = 28.sp,
+                        fontWeight = FontWeight.Black,
+                        lineHeight = 36.sp,
+                        color = WarmOnSurface
                     )
                 }
             }
@@ -177,69 +204,105 @@ fun PatientMainScreen(viewModel: AppViewModel) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(96.dp)
-                    .shadow(4.dp, RoundedCornerShape(20.dp))
-                    .border(2.dp, WarmSecondary, RoundedCornerShape(20.dp))
+                    .shadow(4.dp, RoundedCornerShape(30.dp))
+                    .border(2.dp, Color(0xFF81C784), RoundedCornerShape(30.dp))
                     .testTag("patient_go_home_button"),
-                colors = CardDefaults.cardColors(containerColor = WarmSurface),
-                shape = RoundedCornerShape(20.dp)
+                colors = CardDefaults.cardColors(containerColor = Color(0xFFE8F5E9)),
+                shape = RoundedCornerShape(30.dp)
             ) {
                 Row(
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(horizontal = 24.dp),
-                    verticalAlignment = Alignment.CenterVertically
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Text("🏠", fontSize = 42.sp)
-                    Spacer(modifier = Modifier.width(20.dp))
-                    Column {
-                        Text(
-                            text = "집으로 가기",
-                            fontSize = 24.sp,
-                            fontWeight = FontWeight.Black,
-                            color = WarmSecondary
-                        )
-                        Text(
-                            text = "길 안내를 시작합니다",
-                            fontSize = 14.sp,
-                            fontWeight = FontWeight.Medium,
-                            color = WarmGrey
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text("🏠", fontSize = 42.sp)
+                        Spacer(modifier = Modifier.width(16.dp))
+                        Column {
+                            Text(
+                                text = "집으로 가기",
+                                fontSize = 24.sp,
+                                fontWeight = FontWeight.Black,
+                                color = Color(0xFF2E7D32)
+                            )
+                            Text(
+                                text = "길 안내를 시작합니다",
+                                fontSize = 14.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = Color(0xFF2E7D32).copy(alpha = 0.8f)
+                            )
+                        }
+                    }
+                    
+                    Box(
+                        modifier = Modifier
+                            .size(44.dp)
+                            .clip(CircleShape)
+                            .background(Color(0xFF81C784)),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.ArrowForward,
+                            contentDescription = "Arrow Forward",
+                            tint = Color.White,
+                            modifier = Modifier.size(24.dp)
                         )
                     }
                 }
             }
 
-            // Button 📞 가족에게 전화하기
+            // Button 📞 가족에게 전화하기 (or "아들에게 전화")
             Card(
                 onClick = { viewModel.setScreen("CALL_FAMILY") },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(96.dp)
-                    .shadow(4.dp, RoundedCornerShape(20.dp))
-                    .border(2.dp, WarmPrimary, RoundedCornerShape(20.dp))
+                    .shadow(4.dp, RoundedCornerShape(30.dp))
+                    .border(2.dp, Color(0xFF64B5F6), RoundedCornerShape(30.dp))
                     .testTag("patient_call_family_button"),
-                colors = CardDefaults.cardColors(containerColor = WarmSurface),
-                shape = RoundedCornerShape(20.dp)
+                colors = CardDefaults.cardColors(containerColor = Color(0xFFE3F2FD)),
+                shape = RoundedCornerShape(30.dp)
             ) {
                 Row(
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(horizontal = 24.dp),
-                    verticalAlignment = Alignment.CenterVertically
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Text("📞", fontSize = 42.sp)
-                    Spacer(modifier = Modifier.width(20.dp))
-                    Column {
-                        Text(
-                            text = "가족에게 전화하기",
-                            fontSize = 24.sp,
-                            fontWeight = FontWeight.Black,
-                            color = WarmPrimary
-                        )
-                        Text(
-                            text = "등록된 가족에게 전화를 겁니다",
-                            fontSize = 14.sp,
-                            fontWeight = FontWeight.Medium,
-                            color = WarmGrey
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text("📞", fontSize = 42.sp)
+                        Spacer(modifier = Modifier.width(16.dp))
+                        Column {
+                            Text(
+                                text = "아들에게 전화",
+                                fontSize = 24.sp,
+                                fontWeight = FontWeight.Black,
+                                color = Color(0xFF1565C0)
+                            )
+                            Text(
+                                text = "민수님께 연결합니다",
+                                fontSize = 14.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = Color(0xFF1565C0).copy(alpha = 0.8f)
+                            )
+                        }
+                    }
+                    
+                    Box(
+                        modifier = Modifier
+                            .size(44.dp)
+                            .clip(CircleShape)
+                            .background(Color(0xFF64B5F6)),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.ArrowForward,
+                            contentDescription = "Arrow Forward",
+                            tint = Color.White,
+                            modifier = Modifier.size(24.dp)
                         )
                     }
                 }
@@ -251,32 +314,50 @@ fun PatientMainScreen(viewModel: AppViewModel) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(104.dp)
-                    .shadow(6.dp, RoundedCornerShape(20.dp))
-                    .border(3.dp, WarmAlert, RoundedCornerShape(20.dp))
+                    .shadow(6.dp, RoundedCornerShape(30.dp))
+                    .border(3.dp, Color(0xFFE57373), RoundedCornerShape(30.dp))
                     .testTag("patient_sos_button"),
-                colors = CardDefaults.cardColors(containerColor = WarmLightRed),
-                shape = RoundedCornerShape(20.dp)
+                colors = CardDefaults.cardColors(containerColor = Color(0xFFFFEBEE)),
+                shape = RoundedCornerShape(30.dp)
             ) {
                 Row(
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(horizontal = 24.dp),
-                    verticalAlignment = Alignment.CenterVertically
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Text("🚨", fontSize = 46.sp)
-                    Spacer(modifier = Modifier.width(20.dp))
-                    Column {
-                        Text(
-                            text = "도와주세요",
-                            fontSize = 28.sp,
-                            fontWeight = FontWeight.ExtraBold,
-                            color = WarmAlert
-                        )
-                        Text(
-                            text = "보호자에게 알림을 보내고 119를 연결합니다",
-                            fontSize = 13.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = WarmAlert.copy(alpha = 0.85f)
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text("🚨", fontSize = 46.sp)
+                        Spacer(modifier = Modifier.width(16.dp))
+                        Column {
+                            Text(
+                                text = "도와주세요",
+                                fontSize = 28.sp,
+                                fontWeight = FontWeight.ExtraBold,
+                                color = Color(0xFFC62828)
+                            )
+                            Text(
+                                text = "긴급 위치 알림 전송",
+                                fontSize = 13.sp,
+                                fontWeight = FontWeight.ExtraBold,
+                                color = Color(0xFFC62828).copy(alpha = 0.85f)
+                            )
+                        }
+                    }
+                    
+                    Box(
+                        modifier = Modifier
+                            .size(44.dp)
+                            .clip(CircleShape)
+                            .background(Color(0xFFE57373)),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.ArrowForward,
+                            contentDescription = "Arrow Forward",
+                            tint = Color.White,
+                            modifier = Modifier.size(24.dp)
                         )
                     }
                 }
@@ -863,7 +944,7 @@ fun PatientAiTherapyScreen(viewModel: AppViewModel) {
 @Composable
 fun PatientCognitiveGameScreen(viewModel: AppViewModel) {
     var gameState by remember { mutableStateOf("INTRO") } // INTRO, PLAYING, SUCCESS
-    var selectedOrderList by remember { mutableStateListOf<Int>() }
+    val selectedOrderList = remember { mutableStateListOf<Int>() }
     val numbersList = remember { listOf(2, 4, 1, 3) } // Simple numbers to click: 1 -> 2 -> 3 -> 4
     val targetOrder = listOf(1, 2, 3, 4)
     val context = LocalContext.current

@@ -54,9 +54,11 @@ fun StartScreen(
                 modifier = Modifier
                     .size(140.dp)
                     .background(
-                        color = MaterialTheme.colorScheme.primaryContainer,
-                        shape = RoundedCornerShape(28.dp)
-                    ),
+                        color = Color.White,
+                        shape = RoundedCornerShape(32.dp)
+                    )
+                    .border(1.dp, Color(0xFFFFCC80).copy(alpha = 0.5f), RoundedCornerShape(32.dp))
+                    .shadow(3.dp, RoundedCornerShape(32.dp)),
                 contentAlignment = Alignment.Center
             ) {
                 // Outer comforting circle rings
@@ -110,19 +112,19 @@ fun StartScreen(
 
             Spacer(modifier = Modifier.height(56.dp))
 
-            // Large Button 1: Patient Mode Button (Very large and visible)
+            // Large Button 1: Patient Mode Button (Very large and visible, beautiful supportive green)
             Card(
                 onClick = onStartPatientMode,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(96.dp)
-                    .shadow(8.dp, RoundedCornerShape(24.dp))
-                    .border(3.dp, WarmPrimary, RoundedCornerShape(24.dp))
+                    .height(90.dp)
+                    .shadow(4.dp, RoundedCornerShape(30.dp))
+                    .border(2.dp, Color(0xFF81C784), RoundedCornerShape(30.dp))
                     .testTag("start_patient_mode_btn"),
                 colors = CardDefaults.cardColors(
-                    containerColor = WarmPrimary
+                    containerColor = Color(0xFFE8F5E9)
                 ),
-                shape = RoundedCornerShape(24.dp)
+                shape = RoundedCornerShape(30.dp)
             ) {
                 Row(
                     modifier = Modifier
@@ -140,8 +142,8 @@ fun StartScreen(
                         text = "환자 모드 시작",
                         style = MaterialTheme.typography.titleLarge.copy(
                             fontSize = 24.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = Color.White
+                            fontWeight = FontWeight.Black,
+                            color = Color(0xFF2E7D32)
                         )
                     )
                 }
@@ -149,19 +151,19 @@ fun StartScreen(
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            // Large Button 2: Guardian Mode Button
+            // Large Button 2: Guardian Mode Button (Reassuring technical blue)
             Card(
                 onClick = onStartGuardianMode,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(96.dp)
-                    .shadow(6.dp, RoundedCornerShape(24.dp))
-                    .border(2.dp, WarmSecondary, RoundedCornerShape(24.dp))
+                    .height(90.dp)
+                    .shadow(4.dp, RoundedCornerShape(30.dp))
+                    .border(2.dp, Color(0xFF64B5F6), RoundedCornerShape(30.dp))
                     .testTag("start_guardian_mode_btn"),
                 colors = CardDefaults.cardColors(
-                    containerColor = WarmSecondary
+                    containerColor = Color(0xFFE3F2FD)
                 ),
-                shape = RoundedCornerShape(24.dp)
+                shape = RoundedCornerShape(30.dp)
             ) {
                 Row(
                     modifier = Modifier
@@ -179,8 +181,8 @@ fun StartScreen(
                         text = "보호자 모드 시작",
                         style = MaterialTheme.typography.titleLarge.copy(
                             fontSize = 24.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = Color.White
+                            fontWeight = FontWeight.Black,
+                            color = Color(0xFF1565C0)
                         )
                     )
                 }
