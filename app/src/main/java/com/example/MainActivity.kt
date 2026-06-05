@@ -13,7 +13,6 @@ import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.ui.screens.GuardianScreens
 import com.example.ui.screens.PatientScreens
-import com.example.ui.screens.StartScreen
 import com.example.ui.theme.MyApplicationTheme
 import com.example.ui.viewmodels.AppViewModel
 
@@ -35,10 +34,42 @@ class MainActivity : ComponentActivity() {
                     contentWindowInsets = androidx.compose.foundation.layout.WindowInsets(0, 0, 0, 0)
                 ) { innerPadding ->
                     when (currentMode) {
-                        "START" -> {
-                            StartScreen(
-                                onStartPatientMode = { viewModel.setMode("PATIENT") },
-                                onStartGuardianMode = { viewModel.setMode("GUARDIAN") }
+                        "SPLASH" -> {
+                            com.example.ui.screens.SplashScreen(
+                                onTimeout = { viewModel.setMode("LOGIN") }
+                            )
+                        }
+                        "LOGIN" -> {
+                            com.example.ui.screens.LoginScreen(
+                                onNavigateToSelection = { viewModel.setMode("USER_TYPE_SELECTION") }
+                            )
+                        }
+                        "USER_TYPE_SELECTION" -> {
+                            com.example.ui.screens.UserTypeSelectionScreen(
+                                onSelectGuardian = { viewModel.setMode("ONBOARDING_GUARDIAN") },
+                                onSelectPatient = { viewModel.setMode("ONBOARDING_PATIENT") }
+                            )
+                        }
+                        "ONBOARDING_GUARDIAN" -> {
+                            com.example.ui.screens.GuardianOnboardingScreen(
+                                onFinish = { viewModel.setMode("REGISTER_GUARDIAN") }
+                            )
+                        }
+                        "ONBOARDING_PATIENT" -> {
+                            com.example.ui.screens.PatientOnboardingScreen(
+                                onFinish = { viewModel.setMode("REGISTER_PATIENT") }
+                            )
+                        }
+                        "REGISTER_GUARDIAN" -> {
+                            com.example.ui.screens.RegisterGuardianScreen(
+                                viewModel = viewModel,
+                                onFinish = { viewModel.setMode("GUARDIAN") }
+                            )
+                        }
+                        "REGISTER_PATIENT" -> {
+                            com.example.ui.screens.RegisterPatientScreen(
+                                viewModel = viewModel,
+                                onFinish = { viewModel.setMode("PATIENT") }
                             )
                         }
                         "PATIENT" -> {

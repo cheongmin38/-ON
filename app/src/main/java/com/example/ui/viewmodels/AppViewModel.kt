@@ -12,8 +12,8 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
     private val db = AppDatabase.getInstance(application)
     private val repository = DataRepository(db.appDao)
 
-    // Mode state: "START", "PATIENT", "GUARDIAN"
-    private val _currentMode = MutableStateFlow("START")
+    // Mode state: "SPLASH", "LOGIN", "USER_TYPE_SELECTION", "ONBOARDING_GUARDIAN", "ONBOARDING_PATIENT", "REGISTER_GUARDIAN", "REGISTER_PATIENT", "PATIENT", "GUARDIAN"
+    private val _currentMode = MutableStateFlow("SPLASH")
     val currentMode: StateFlow<String> = _currentMode.asStateFlow()
 
     // Screen state inside specific modes
