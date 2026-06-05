@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기억ON - 어르신 안심 스마트 동행 비서</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        warmPrimary: '#D84315',
+                        warmOrange: '#E65100',
+                        warmAmber: '#FFF3E0',
+                        warmLightAmber: '#FFF8F2',
+                        warmDark: '#2D2D2D',
+                        warmAlert: '#C62828'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #FFFDFB;
+        }
+    </style>
+</head>
+<body class="text-warmDark antialiased selection:bg-orange-200">
+
+    <!-- Top Navigation -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-orange-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between py-4">
+            <div class="flex items-center space-x-3">
+                <span class="text-3xl">🧩</span>
+                <span class="text-2xl font-black text-warmPrimary tracking-tight">기억ON</span>
+            </div>
+            <nav class="hidden md:flex space-x-8 font-medium">
+                <a href="#features" class="text-gray-600 hover:text-warmPrimary transition">주요 기능</a>
+                <a href="#how-to-use" class="text-gray-600 hover:text-warmPrimary transition">이용 방법</a>
+                <a href="#app-preview" class="text-gray-600 hover:text-warmPrimary transition">미리보기</a>
+            </nav>
+            <div>
+                <a href="#download" class="inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-sm font-bold rounded-xl text-white bg-warmPrimary hover:bg-warmOrange transition shadow-md hover:shadow-lg">
+                    <i class="fa-solid fa-download mr-2"></i> APK 다운로드
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden bg-gradient-to-b from-[#FFF8F2] via-[#FFFDFB] to-white pt-10 pb-16 lg:pt-20 lg:pb-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-12 items-center">
+                
+                <!-- Left text content -->
+                <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-orange-100 text-warmPrimary mb-5">
+                       🛡️ 실시간 AI 어르신 안전망 서비스
+                    </span>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 leading-tight tracking-tight">
+                        사랑하는 가족들과<br>
+                        <span class="text-warmPrimary">따뜻한 기억을 연결</span>하는<br>
+                        기억ON
+                    </h1>
+                    <p class="mt-6 text-lg text-gray-600 font-medium leading-relaxed">
+                        기억ON은 경도인지장애 및 치매 어르신과 보호자를 24시간 실시간 무선으로 이어주는 스마트 안심 동행 서비스입니다. 안심 귀가, SOS 비상 호출, 맞춤형 복약 알람, 그리고 매일 즐기는 두뇌 발달 게임까지 하나의 앱으로 만나보세요.
+                    </p>
+                    
+                    <div class="mt-10 sm:flex sm:justify-center lg:justify-start gap-4">
+                        <a href="#download" class="flex items-center justify-center px-8 py-4 border border-transparent text-base font-black rounded-2xl text-white bg-warmPrimary hover:bg-warmOrange transition shadow-lg hover:shadow-xl w-full sm:w-auto">
+                            <i class="fa-solid fa-download mr-3 text-lg"></i> 안심 APK 설치하기
+                        </a>
+                        <a href="#features" class="mt-3 sm:mt-0 flex items-center justify-center px-8 py-4 border border-2 border-orange-200 text-base font-bold rounded-2xl text-gray-700 bg-white hover:bg-orange-50 transition w-full sm:w-auto">
+                            자세히 알아보기
+                        </a>
+                    </div>
+
+                    <!-- Small Stat Metrics -->
+                    <div class="mt-10 border-t border-orange-100 pt-8 grid grid-cols-3 gap-6 text-center lg:text-left">
+                        <div>
+                            <p class="text-3xl font-extrabold text-warmPrimary">100%</p>
+                            <p class="text-xs text-gray-500 font-bold mt-1">보호자 실시간 통보</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-extrabold text-warmPrimary">BIG</p>
+                            <p class="text-xs text-gray-500 font-bold mt-1">초고대 초대형 글씨</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-extrabold text-warmPrimary">AI</p>
+                            <p class="text-xs text-gray-500 font-bold mt-1">기억 치료 음성 가이드</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Phone Mockup -->
+                <div class="mt-16 sm:mt-24 lg:mt-0 lg:col-span-6 flex justify-center">
+                    <div class="relative w-80 h-[640px] bg-warmDark rounded-[48px] border-[10px] border-warmDark shadow-2xl overflow-hidden ring-8 ring-orange-200/50">
+                        <!-- Top Notch -->
+                        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-40 h-6 bg-warmDark rounded-b-2xl z-20 flex justify-center items-center">
+                            <div class="w-12 h-1 bg-gray-700 rounded-full"></div>
+                        </div>
+
+                        <!-- Screen Content (Home Screen simulation) -->
+                        <div class="relative w-full h-full bg-[#FFF8F2] flex flex-col p-5 pt-8 overflow-y-auto">
+                            
+                            <!-- Internal Header -->
+                            <div class="flex items-center justify-between border-b border-orange-100 pb-3 mb-4">
+                                <div>
+                                    <p class="text-xs text-gray-500">안녕하세요</p>
+                                    <h4 class="text-base font-black text-gray-800">김만옥 어르신 👴</h4>
+                                </div>
+                                <span class="text-xs font-black px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 animate-pulse">● 안심동행 중</span>
+                            </div>
+
+                            <!-- High Contrast Digital Clock -->
+                            <div class="bg-white rounded-2xl p-4 border border-orange-200 shadow-sm text-center mb-4">
+                                <p class="text-xs font-bold text-gray-500">6월 5일 금요일</p>
+                                <h2 class="text-3xl font-black text-warmPrimary mt-1">오후 11시 59분</h2>
+                            </div>
+
+                            <!-- SOS BUTTON -->
+                            <div class="bg-warmAlert text-white rounded-2xl p-4 shadow-md flex items-center space-x-3 mb-3 cursor-pointer hover:bg-red-700 transition">
+                                <span class="text-2xl">🚨</span>
+                                <div class="text-left">
+                                    <p class="font-extrabold text-sm">도와주세요! (SOS)</p>
+                                    <p class="text-[10px] opacity-80">가족에게 긴급 알림 및 위치 전달</p>
+                                </div>
+                            </div>
+
+                            <!-- GO HOME BUTTON -->
+                            <div class="bg-[#2E7D32] text-white rounded-2xl p-4 shadow-md flex items-center space-x-3 mb-3 cursor-pointer hover:bg-emerald-800 transition">
+                                <span class="text-2xl">🏠</span>
+                                <div class="text-left">
+                                    <p class="font-extrabold text-sm">집으로 가는 길 길안내</p>
+                                    <p class="text-[10px] opacity-80">등록된 집 주소 정보 상세 보기</p>
+                                </div>
+                            </div>
+
+                            <!-- BRAIN GAME BUTTON -->
+                            <div class="bg-[#1565C0] text-white rounded-2xl p-4 shadow-md flex items-center space-x-3 mb-3 cursor-pointer hover:bg-blue-800 transition">
+                                <span class="text-2xl">🧩</span>
+                                <div class="text-left">
+                                    <p class="font-extrabold text-sm">재미있는 두뇌 게임</p>
+                                    <p class="text-[10px] opacity-80">기억력 향상 데일리 퀴즈</p>
+                                </div>
+                            </div>
+
+                            <!-- Bottom Navigation Simulation -->
+                            <div class="mt-auto pt-4 bg-white border-t border-orange-100 -mx-5 -mb-5 px-5 py-3 flex justify-between items-center text-center">
+                                <div class="text-warmPrimary">
+                                    <i class="fa-solid fa-house text-sm"></i>
+                                    <p class="text-[9px] font-black">홈</p>
+                                </div>
+                                <div class="text-gray-400">
+                                    <i class="fa-solid fa-prescription-bottle-medical text-sm"></i>
+                                    <p class="text-[9px] font-bold">약 먹기</p>
+                                </div>
+                                <div class="text-gray-400">
+                                    <i class="fa-solid fa-users text-sm"></i>
+                                    <p class="text-[9px] font-bold">가족</p>
+                                </div>
+                                <div class="text-gray-400">
+                                    <i class="fa-solid fa-circle-question text-sm"></i>
+                                    <p class="text-[9px] font-bold">도움말</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Features Section -->
+    <section id="features" class="py-16 bg-white border-t border-b border-orange-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
+                    어르신의 눈높이에 맞춘 5대 안심 서비스
+                </h2>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-500 font-medium">
+                    쉽지만 강력한 복지 지능 기술이 가득 차 숨어 있습니다.
+                </p>
+            </div>
+
+            <div class="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                
+                <!-- Card 1 -->
+                <div class="relative bg-orange-50/40 border border-orange-100 rounded-3xl p-8 hover:shadow-lg transition">
+                    <div class="w-12 h-12 rounded-2xl bg-red-100 text-warmAlert flex items-center justify-center text-lg font-black mb-6">
+                        🚨
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">가족 호출 비상 경보 (SOS)</h3>
+                    <p class="mt-4 text-gray-600 leading-relaxed font-medium">
+                        어려운 조작 필요 없이 빨간 SOS 버튼을 1회 누르기만 하면, 등록된 가족 아들, 딸 스마트폰으로 위도 경도 실시간 내비게이션 좌표 문자가 비상 무선 통보됩니다.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="relative bg-orange-50/40 border border-orange-100 rounded-3xl p-8 hover:shadow-lg transition">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-lg font-black mb-6">
+                        🏠
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">안심 안심 귀가 길안내</h3>
+                    <p class="mt-4 text-gray-600 leading-relaxed font-medium">
+                        집 주소가 생각나지 않을 때 큰 글씨 주소와 함께 주변 거주지 복지 센터 위치를 보여주며, 주변 이웃들에게 즉시 화면을 보여주어 안전하게 연계 가이드가 가능합니다.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="relative bg-orange-50/40 border border-orange-100 rounded-3xl p-8 hover:shadow-lg transition">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-lg font-black mb-6">
+                        💊
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">규칙적인 약알림 및 음성 비서</h3>
+                    <p class="mt-4 text-gray-600 leading-relaxed font-medium">
+                        약 드실 시간이 되면 전체 화면 알림과 함께 소리가 울리며, 정답 입력 시 비약을 축하해주는 인공지능 따뜻한 목소리 스피치가 가동되어 인지 자존감을 올려줍니다.
+                    </p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="relative bg-orange-50/40 border border-orange-100 rounded-3xl p-8 hover:shadow-lg transition">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-100 text-blue-800 flex items-center justify-center text-lg font-black mb-6">
+                        🧠
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">매일 재미있는 집중 두뇌 퀴즈</h3>
+                    <p class="mt-4 text-gray-600 leading-relaxed font-medium">
+                        요일 맞추기, 비어있는 숫자 풀기 등 시각 연상 중심의 귀여운 3단계 미니 퍼즐을 매일 가볍게 풀 수 있어 상상력 회복과 두뇌 건강에 큰 활력을 선물합니다.
+                    </p>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="relative bg-orange-50/40 border border-orange-100 rounded-3xl p-8 hover:shadow-lg transition">
+                    <div class="w-12 h-12 rounded-2xl bg-purple-100 text-purple-800 flex items-center justify-center text-lg font-black mb-6">
+                        📸
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">추억 사진 동화 AI 해석</h3>
+                    <p class="mt-4 text-gray-600 leading-relaxed font-medium">
+                        보호자가 업로드한 가족 여행이나 생신 등 일상 추억 사진을 보고, AI가 동화속 한 장면 같은 옛이야기로 따뜻하게 풀어 오디오 목소리로 천천히 들려드립니다.
+                    </p>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="relative bg-orange-50/40 border border-orange-100 rounded-3xl p-8 hover:shadow-lg transition">
+                    <div class="w-12 h-12 rounded-2xl bg-gray-100 text-gray-800 flex items-center justify-center text-lg font-black mb-6">
+                        📱
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">초대형 버튼 고대비 모드</h3>
+                    <p class="mt-4 text-gray-600 leading-relaxed font-medium">
+                        시력이 어두운 어르신들의 인체 공학적 사용성을 반영해, 표준 글씨 대비 1.5배 이상 큰 서체와 터치 유효 간격 48dp 이상의 완전 큼직한 가이드라인을 제공합니다.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- How To Use / Guide Section -->
+    <section id="how-to-use" class="py-16 bg-[#FFF8F2]/60">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-extrabold text-warmDark">기억ON 이용 단계 안내</h2>
+                <p class="text-gray-500 font-medium mt-3">아들, 딸, 사회 복지사분들이 처음에만 단 1분 설정해주세요.</p>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Step 1 -->
+                <div class="flex items-start bg-white p-6 rounded-2xl border border-orange-100 shadow-sm">
+                    <span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-warmPrimary text-white font-black text-lg">1</span>
+                    <div class="ml-4">
+                        <h4 class="text-lg font-bold text-gray-900">앱 APK 다운로드 및 폰에 직접 설치</h4>
+                        <p class="mt-1 text-gray-600 font-medium">하단 다운로드 버튼 또는 에뮬레이터를 통해 모바일 환경에 설치합니다.</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="flex items-start bg-white p-6 rounded-2xl border border-orange-100 shadow-sm">
+                    <span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-warmPrimary text-white font-black text-lg">2</span>
+                    <div class="ml-4">
+                        <h4 class="text-lg font-bold text-gray-900">최초 보호자 모드 진입 및 연락 주소 등록</h4>
+                        <p class="mt-1 text-gray-600 font-medium">관리자/보호자 화면에서 어르신의 안전 주거지와 SOS 전송 연락처, 복약 내용을 한 번만 입력해주세요.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="flex items-start bg-white p-6 rounded-2xl border border-orange-100 shadow-sm">
+                    <span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-warmPrimary text-white font-black text-lg">3</span>
+                    <div class="ml-4">
+                        <h4 class="text-lg font-bold text-gray-900">어르신 홈화면 대기 및 인계</h4>
+                        <p class="mt-1 text-gray-600 font-medium">이제 자녀가 곁에 없어도 스마트 귀가 보조와 하루 안심 돌봄 루틴이 자동으로 가동됩니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Preview/Streaming Info -->
+    <section id="app-preview" class="py-16 bg-white border-t border-orange-100">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-extrabold text-gray-900">AI Studio 브라우저 스트리밍 데모</h2>
+            <p class="mt-4 text-lg text-gray-600 font-medium leading-relaxed">
+                다운로드하기 전에 직접 조작을 테스트해보고 싶으신가요?<br>
+                Google AI Studio의 개발 링크를 통해 웹 브라우저 안에서 실시간 안드로이드 가상단말을 바로 조작할 수 있습니다.
+            </p>
+            <div class="mt-8 flex justify-center">
+                <a href="https://ais-pre-rxxjmkb4ugewcjl3w2s6rr-78234827399.asia-east1.run.app" target="_blank" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-bold rounded-2xl text-warmPrimary bg-orange-100 hover:bg-orange-200 transition">
+                    <i class="fa-solid fa-play mr-2 text-md"></i> 실시간 데모 에뮬레이터 실행하기
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Block -->
+    <section id="download" class="py-20 bg-gradient-to-r from-warmPrimary to-warmOrange text-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <span class="text-4xl">🎁</span>
+            <h2 class="text-4xl font-extrabold mt-4">지금 바로 다운로드하여 사용해보세요</h2>
+            <p class="mt-4 text-lg opacity-90 max-w-xl mx-auto">
+                가장 쉬운 부모님 보안 지키미, 기억ON이 24시간 내내 따스한 손을 잡고 지켜드립니다.
+            </p>
+            <div class="mt-10">
+                <button onclick="alert('Google AI Studio의 [빌드 완료 메인 메뉴] 에서 APK 패키징(APK Export) 버튼을 누르면 다운로드 하실 수 있는 최종 실제 빌드가 준비되어 즉시 설치하실 수 있습니다!')" class="inline-flex items-center justify-center px-8 py-4 text-lg font-black rounded-2xl bg-white text-warmPrimary hover:bg-orange-50 transition shadow-2xl">
+                    <i class="fa-solid fa-file-apk mr-3 text-xl"></i> 안심 설치 파일(.APK) 다운로드 설명보기
+                </button>
+            </div>
+            <p class="text-xs opacity-75 mt-4">Android 10 이상 무선 전동 대응 지원</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-warmDark text-gray-400 py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:flex sm:justify-between sm:items-center">
+            <div class="flex justify-center items-center space-x-2 text-white">
+                <span class="text-2xl">🧩</span>
+                <span class="text-lg font-black tracking-tight">기억ON 대가족 지원</span>
+            </div>
+            <p class="mt-4 sm:mt-0 text-sm opacity-80">
+                &copy; 2026 기억ON. All rights reserved. 안심 보조 및 건강 도우미 동행 솔루션.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
