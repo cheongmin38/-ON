@@ -1,0 +1,6 @@
+{
+  "name": "기억지킴이",
+  "description": "치매 환자의 실종을 예방하고 일상 보호를 돕는 친절한 AI 돌봄 도우미",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
